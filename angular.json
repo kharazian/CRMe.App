@@ -156,6 +156,45 @@
           }
         }
       }
+    },
+    "abp-ng.theme.matero": {
+      "projectType": "library",
+      "root": "theme",
+      "sourceRoot": "theme/src",
+      "prefix": "abp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "theme/tsconfig.lib.json",
+            "project": "theme/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "theme/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "coverage": true,
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "theme/tsconfig.lib.json",
+              "theme/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   }
 }
