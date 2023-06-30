@@ -53,26 +53,6 @@
                 "inject": true,
                 "bundleName": "fontawesome-all.min"
               },
-              {
-                "input": "node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css",
-                "inject": true,
-                "bundleName": "fontawesome-v4-shims.min"
-              },
-              {
-                "input": "node_modules/@swimlane/ngx-datatable/index.css",
-                "inject": true,
-                "bundleName": "ngx-datatable-index"
-              },
-              {
-                "input": "node_modules/@swimlane/ngx-datatable/assets/icons.css",
-                "inject": true,
-                "bundleName": "ngx-datatable-icons"
-              },
-              {
-                "input": "node_modules/@swimlane/ngx-datatable/themes/material.css",
-                "inject": true,
-                "bundleName": "ngx-datatable-material"
-              },
               "src/styles.scss"
             ],
             "scripts": []
@@ -152,6 +132,45 @@
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "abp-ng.theme.matero": {
+      "projectType": "library",
+      "root": "theme",
+      "sourceRoot": "theme/src",
+      "prefix": "abp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "theme/tsconfig.lib.json",
+            "project": "theme/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "theme/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "coverage": true,
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "theme/tsconfig.lib.json",
+              "theme/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
             ]
           }
         }
